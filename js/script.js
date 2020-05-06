@@ -22,6 +22,24 @@ quantityInput.forEach((input) => {
 })
 
 
+let addToCartBtn = document.querySelectorAll(".shop-item-button")
+addToCartBtn.forEach((button) => {
+    button.addEventListener('click', (event) => {
+        let button = event.target
+        let shopItem = button.parentElement.parentElement
+        let title = shopItem.querySelectorAll('.shop-item-title')[0].innerText
+        let price = shopItem.querySelectorAll('shop-item-price')[0].innerText
+        let imgSrc = shopItem.querySelectorAll('shop-item-image')[0].src
+        addItemToCart(title, price, imgSrc)
+    })
+})
+
+addItemToCart = (title, price, imgSrc) => {
+    let cartRow = document.createElement('div');
+    let cartItems = document.querySelectorAll('.cart-items')[0];
+    cartItem.append(cartRow)
+}
+
 updateCartTotal = () => {
     let cartItemContainer = document.querySelectorAll('.cart-items')[0];
     let cartRows = cartItemContainer.querySelectorAll('.cart-row')
