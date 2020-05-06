@@ -28,16 +28,28 @@ addToCartBtn.forEach((button) => {
         let button = event.target
         let shopItem = button.parentElement.parentElement
         let title = shopItem.querySelectorAll('.shop-item-title')[0].innerText
-        let price = shopItem.querySelectorAll('shop-item-price')[0].innerText
-        let imgSrc = shopItem.querySelectorAll('shop-item-image')[0].src
+        let price = shopItem.querySelectorAll('.shop-item-price')[0].innerText
+        let imgSrc = shopItem.querySelectorAll('.shop-item-image')[0].src
         addItemToCart(title, price, imgSrc)
     })
 })
 
 addItemToCart = (title, price, imgSrc) => {
     let cartRow = document.createElement('div');
+    cartRow.classList.add("cart-row")
     let cartItems = document.querySelectorAll('.cart-items')[0];
-    cartItem.append(cartRow)
+    let cartRowContents = `
+    <div class="cart-item cart-column">
+    <img class="cart-item-image" src=${imgSrc} width="100" height="100">
+    <span class="cart-item-title">${title}</span>
+</div>
+<span class="cart-price cart-column">${price}</span>
+<div class="cart-quantity cart-column">
+    <input class="cart-quantity-input" type="number" value="2">
+    <button class="btn btn-danger" type="button">REMOVE</button>
+</div>`
+    cartRow.innerHTML = cartRowContents
+    cartItems.append(cartRow)
 }
 
 updateCartTotal = () => {
