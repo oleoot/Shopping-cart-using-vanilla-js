@@ -1,19 +1,39 @@
-
-let rmBtn = document.querySelectorAll('.btn-danger');
-rmBtn.forEach((cartItem) => {
-    cartItem.addEventListener('click', removeCartItem)
-})
-
-let quantityInput = document.querySelectorAll('.cart-quantity-input')
-quantityInput.forEach((input) => {
-    input.addEventListener('change', quantityChanged)
-})
+if (document.readyState == 'loading') {
+    document.addEventListener('DOMContentLoaded', ready)
+} else {
+    ready()
+}
 
 
-let addToCartBtn = document.querySelectorAll(".shop-item-button")
-addToCartBtn.forEach((button) => {
-    button.addEventListener('click', addItemToCartClicked)
-})
+function ready() {
+    let rmBtn = document.querySelectorAll('.btn-danger');
+    rmBtn.forEach((cartItem) => {
+        cartItem.addEventListener('click', removeCartItem)
+    })
+
+    let quantityInput = document.querySelectorAll('.cart-quantity-input')
+    quantityInput.forEach((input) => {
+        input.addEventListener('change', quantityChanged)
+    })
+
+
+    let addToCartBtn = document.querySelectorAll(".shop-item-button")
+    addToCartBtn.forEach((button) => {
+        button.addEventListener('click', addItemToCartClicked)
+    })
+    document.querySelectorAll('.btn-purchase')[0].addEventListener('click', purchaseClicked)
+
+
+}
+function purchaseClicked() {
+    alert('Thank you for your purchase')
+    let cartItems = document.querySelectorAll('.cart-items')[0]
+    while (cartItems.hasChildNodes()) {
+        cartItems.removeChild(cartItems.firstChild)
+    }
+    updateCartTotal()
+}
+
 
 function removeCartItem(event) {
     let btnClicked = event.target;
