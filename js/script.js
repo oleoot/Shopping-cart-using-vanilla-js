@@ -66,6 +66,7 @@ function addItemToCart(title, price, imgSrc) {
             alert('This item is already added to the cart')
             return
         }
+
     })
     let cartRowContents = `
     <div class="cart-item cart-column">
